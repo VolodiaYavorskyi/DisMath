@@ -3,11 +3,11 @@
 
 int main()
 {           
-    int n = 100, m = 100, k = 0, p = 0;   
-    int A[n];
-    int B[n];
-    int I[100];
-    int SD[100];
+    int n = 100, m = 100, k = 0, p = 0;
+    char A[n];
+    char B[n];
+    char I[100];
+    char SD[100];
     
     printf("Enter the amount of elemens in array A:");
     n = GetInt();
@@ -15,12 +15,12 @@ int main()
     for (int i = 0; i < n; i++)
     {
         printf("A[%d] = ", i);
-        A[i] = GetInt();
+        A[i] = GetChar();
     }
     
     printf("A = ");
     for (int i = 0; i < n; i++)
-        printf("%d; ", A[i]);
+        printf("%c; ", A[i]);
     printf("\n");
     
     printf("Enter the amount of elemens in array B:");
@@ -29,14 +29,15 @@ int main()
     for (int i = 0; i < m; i++)
     {
         printf("B[%d] = ", i);
-        B[i] = GetInt();
+        B[i] = GetChar();
     }
     
     printf("B = ");
     for (int i = 0; i < m; i++)
-        printf("%d; ", B[i]);
+        printf("%c; ", B[i]);
     printf("\n");
     
+    printf("I = ");
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
@@ -44,14 +45,12 @@ int main()
             if(A[i] == B[j])
             {
                 I[k] = A[i];
+                printf("%c; ", I[k]);
                 k++;
                 break;
             }
         }
-    }
-    printf("I = ");
-    for (int i = 0; i < k; i++)
-        printf("%d; ", I[k]);
+    }           
     printf("\n");
     
     printf("SD = ");
@@ -59,13 +58,29 @@ int main()
     {
         for (int j = 0; j < m; j++)
         {
-            if(SD[p] == B[j])
+            if(A[i] == B[j])
                 break;
-            
-            if(j == m - 1)
+           
+            if(j == (m - 1))
             {
                 SD[p] = A[i];
-                printf("%d; ", SD[p]);
+                printf("%c; ", SD[p]);
+                p++; 
+            }
+        }
+    }
+    p = 0;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            if(B[i] == A[j])
+                break;
+           
+            if(j == (m - 1))
+            {
+                SD[p] = B[i];
+                printf("%c; ", SD[p]);
                 p++; 
             }
         }
