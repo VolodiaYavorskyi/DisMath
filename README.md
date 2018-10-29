@@ -1,2 +1,2 @@
-# AlgoAndProPart1
+# DisMath
 Яворський Володимир КН-109
