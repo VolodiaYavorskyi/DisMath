@@ -14,7 +14,7 @@ int main()
     
     for (int i = 0; i < n; i++)
     {
-        printf("A[%d] = ", i);
+        printf("A[%d] = ", i + 1);
         A[i] = GetChar();
     }
     
@@ -28,7 +28,7 @@ int main()
     
     for (int i = 0; i < m; i++)
     {
-        printf("B[%d] = ", i);
+        printf("B[%d] = ", i + 1);
         B[i] = GetChar();
     }
     
