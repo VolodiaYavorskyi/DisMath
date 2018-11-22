@@ -73,31 +73,23 @@ int main()
             }
         }
     }
+    printf("\n\n");
     
-    printf("\n");
-    for (int i = 0; i < 11; i++)
-    {
-        for (int j = 0; j < 11; j++)
-        {
-            printf("%d; ", B[i][j]);
-        }
-        printf("\n");
-    }
+    return 0;
 }   
 
 int makeTrees(int n, int A[n][n])
-{   
-    for (int i = 1; i <= n; i++)
-    {
-        A[i-1][0] = i;
-    }
-    
+{
     for (int i = 0; i < n; i++)
     {
-        for (int j = 1; j < n; j++)
+        for (int j = 0; j < n; j++)
         {
             A[i][j] = 0;
         }
+    }
+    for (int i = 0; i < n; i++)
+    {
+        A[i][i] = i + 1;
     }
     
     return A[n][n];
@@ -128,7 +120,7 @@ int areInDifferentTrees(int n, int A[n][n], int first, int second)
         temp1 = 0;
         temp2 = 0;
         // first element
-        for (int j = 1; j < n; j++)
+        for (int j = 0; j < n; j++)
         {
             if (A[i][j] == first)
             {
@@ -136,7 +128,7 @@ int areInDifferentTrees(int n, int A[n][n], int first, int second)
             }
         }
         // second element
-        for (int k = 1; k < n; k++)
+        for (int k = 0; k < n; k++)
         {
             if (A[i][k] == second)
             {
@@ -154,22 +146,32 @@ int areInDifferentTrees(int n, int A[n][n], int first, int second)
 }
 
 void addToTree(int n, int A[n][n], int first, int second)
-{ 
+{
+    int scndLine;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            if (A[i][j] == second)
+            {
+                scndLine = i;
+            }
+        }
+    }
+    
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
         {
             if (A[i][j] == first)
             {
-                A[i][second - 1] = second;
-                A[second - 1][0] = 0;
-            }
-            for (int k = 1; k < n; k++)
-            {
-                if (A[second - 1][k])
+                for (int k = 0; k < n; k++)
                 {
-                    A[i][second - 1] = A[second - 1][k];
-                    A[second - 1][k] = 0;
+                    if (A[scndLine][k])
+                    {
+                        A[i][k] = A[scndLine][k];
+                        A[scndLine][k] = 0;
+                    }
                 }
             }
         }
